@@ -2,10 +2,10 @@ import 'package:cli_repl/cli_repl.dart';
 import 'package:interactive/src/main.dart';
 
 Reader createReader() => Repl(
-      prompt: '>>> ',
-      continuation: '... ',
-      validator: replValidator,
-    ).run;
+  prompt: '>>> ',
+  continuation: '... ',
+  validator: replValidator,
+).run;
 
 const _leftBrackets = ['{', '[', '('];
 const _rightToLeftBracketMap = {'}': '{', ']': '[', ')': '('};

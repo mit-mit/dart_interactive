@@ -43,3 +43,6 @@ linter:
     use_late_for_private_fields_and_variables: false
     unnecessary_await_in_return: false
     avoid_print: false
+
+formatter:
+  trailing_commas: preserve
