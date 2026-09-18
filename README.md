@@ -122,6 +122,7 @@ Install the REPL locally:
 
 ```shell
 dart install interactive
+# or: dart pub global activate interactive
 ```
 
 Use (just a normal binary):
