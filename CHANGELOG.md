@@ -1,6 +1,6 @@
 ## 1.5.0
 
-* Bump to Dart 3.11.0+, analyzer 14+
+* Support analyzer 13.3+ and 14+
 * Support installing with `dart install`.
 * Support running directly from pub (`dart run interactive@`)
 

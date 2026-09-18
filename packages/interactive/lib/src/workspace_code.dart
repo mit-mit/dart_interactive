@@ -18,25 +18,28 @@ class WorkspaceCode {
 
   const WorkspaceCode.codeBlock({
     required this.generatedMethodCodeBlock,
-  }) : imports = const {},
-       classMap = const {},
-       functionMap = const {},
-       miscDeclarationMap = const {};
+  })  : imports = const {},
+        classMap = const {},
+        functionMap = const {},
+        miscDeclarationMap = const {};
 
   const WorkspaceCode.empty()
-    : imports = const {},
-      classMap = const {},
-      functionMap = const {},
-      miscDeclarationMap = const {},
-      generatedMethodCodeBlock = '';
+      : imports = const {},
+        classMap = const {},
+        functionMap = const {},
+        miscDeclarationMap = const {},
+        generatedMethodCodeBlock = '';
 
   WorkspaceCode merge(WorkspaceCode other) => WorkspaceCode(
-    imports: {...imports, ...other.imports},
-    classMap: {...classMap, ...other.classMap},
-    functionMap: {...functionMap, ...other.functionMap},
-    miscDeclarationMap: {...miscDeclarationMap, ...other.miscDeclarationMap},
-    generatedMethodCodeBlock: other.generatedMethodCodeBlock,
-  );
+        imports: {...imports, ...other.imports},
+        classMap: {...classMap, ...other.classMap},
+        functionMap: {...functionMap, ...other.functionMap},
+        miscDeclarationMap: {
+          ...miscDeclarationMap,
+          ...other.miscDeclarationMap
+        },
+        generatedMethodCodeBlock: other.generatedMethodCodeBlock,
+      );
 
   String generate() {
     return '''
@@ -99,14 +102,12 @@ class ClassInfo {
 
     if (!rawCode.endsWith(kEnding)) {
       log.info(
-        'generateClass skip since not endsWidth "$kEnding" (rawCode=$rawCode)',
-      );
+          'generateClass skip since not endsWidth "$kEnding" (rawCode=$rawCode)');
       return rawCode;
     }
 
-    final accessorCodes = potentialAccessors
-        .map(_generateAccessorCode)
-        .join('\n');
+    final accessorCodes =
+        potentialAccessors.map(_generateAccessorCode).join('\n');
 
     final replacedEnding = '$accessorCodes\n}';
 
